@@ -70,17 +70,17 @@ class SplashScreen(QMainWindow):
         self.animationLabel.move(value)
     
     def startAnimation(self):
-        
+        # Calcular posiciones
         centerY = 180
         
+        # Primera animación: Entrada con bounce al centro
+        startPos = QPoint(-200, centerY)      # Fuera a la izquierda
+        centerPos = QPoint(200, centerY)      # Centro de la ventana
         
-        startPos = QPoint(-200, centerY)      
-        centerPos = QPoint(200, centerY)     
+        # Segunda animación: Salida suave
+        endPos = QPoint(800, centerY)         # Fuera a la derecha
         
-        
-        endPos = QPoint(800, centerY)         
-        
-    
+        # Configurar primera animación (entrada con bounce)
         self.anim1.setStartValue(startPos)
         self.anim1.setEndValue(centerPos)
         
@@ -92,7 +92,10 @@ class SplashScreen(QMainWindow):
         self.animationGroup.start()
     
     def animationFinished(self):
+        """Importar MainWindow aquí para evitar import circular"""
         self.hide()
+        
+        # Importar aquí para evitar el problema de importación circular
         from mainWindow import MainWindow
         self.mainWindow = MainWindow()
         self.mainWindow.show()

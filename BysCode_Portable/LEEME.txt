@@ -1,0 +1,14 @@
+BYSCODE - Buscador de Códigos SAP
+
+🎯 Cómo usar:
+1. Ejecutar 'BysCode.exe'
+2. La aplicación se conectará automáticamente a SAP
+3. Escribir el nombre del material y presionar Buscar
+
+📁 Estructura:
+- BysCode.exe (Ejecutable principal)
+- src/mainWindow.ui (Interfaz)
+- src/services/sap_service.py (Conexión SAP)
+- media/ (Logos e iconos)
+
+⚡ Portable: No necesita instalación

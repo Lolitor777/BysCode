@@ -1,9 +1,22 @@
 import sys
+import os
 from PyQt6.QtWidgets import QApplication
-from splashScreen import SplashScreen
+
+# Determinar si estamos en un ejecutable de PyInstaller
+def get_base_path():
+    if getattr(sys, 'frozen', False):
+        # Si es ejecutable, la base es la carpeta del ejecutable
+        return os.path.dirname(sys.executable)
+    else:
+        # Si es script, la base es la carpeta del script
+        return os.path.dirname(__file__)
 
 def main():
     app = QApplication(sys.argv)
+    
+    # Establecer el path base para recursos
+    base_path = get_base_path()
+    print(f"📍 Path base: {base_path}")
     
     # Establecer estilo general de la aplicación
     app.setStyleSheet("""
@@ -40,6 +53,7 @@ def main():
     """)
     
     # Mostrar splash screen con animación
+    from splashScreen import SplashScreen
     splash = SplashScreen()
     splash.show()
     splash.startAnimation()
